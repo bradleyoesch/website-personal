@@ -17,6 +17,7 @@ module.exports = {
             'error',
             'unix'
         ],
+        'no-console': 'error',
         'quotes': [
             'error',
             'single'
@@ -25,6 +26,12 @@ module.exports = {
             'error',
             'always'
         ],
-        'no-console': 'error'
+        "sort-imports": ["error", {
+            "ignoreCase": false,
+            "ignoreDeclarationSort": false,
+            "ignoreMemberSort": false,
+            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+            "allowSeparatedGroups": true
+        }]
     }
 };

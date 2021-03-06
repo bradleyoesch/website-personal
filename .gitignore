@@ -1,6 +1,6 @@
 # My additions
 .DS_Store
-static/
+build/
 
 # Logs
 logs

@@ -26,7 +26,6 @@ const getTitle = (title) => {
 
 /**
  * Render the template and return the result
- * TODO: actual content
  */
 const getRenderedTemplate = (baseTemplate, fileName) => {
     const path = `${Paths.TEMPLATES}${fileName}`;

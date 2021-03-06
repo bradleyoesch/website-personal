@@ -1,13 +1,15 @@
 # Website Personal
 
-App to generate static files to serve at [http://bradleyoesch.com](http://bradleyoesch.com).
+Simple node app to generate static files to serve at [http://bradleyoesch.com](http://bradleyoesch.com).
 
 ## Development
 
-Run the app
+1. Install [node](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/development_environment#installing_node).
+1. Install [npm](https://www.npmjs.com/get-npm).
 
+Run the app.
 ```bash
 node src/js/app.js
 ```
 
-Server will run at [http://127.0.0.1:3000/](http://127.0.0.1:3000/)
+Server will run at [http://127.0.0.1:3000/](http://127.0.0.1:3000/).

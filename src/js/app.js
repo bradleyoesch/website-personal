@@ -1,36 +1,47 @@
 import http from 'http';
-import { promises as fs } from 'fs';
-import Mustache from 'mustache';
+
+import * as Files from './files.js';
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
-const getTitle = (title) => {
-    return `${title} | Bradley Oesch`;
-};
 
-const view = {
-    title: getTitle('Base'),
-    content: 'Hello World'
-};
+const renderMap = Files.buildRenderMap();
 
-const file = fs.readFile('src/templates/base.html', 'utf8');
+const cleanUrl = (url) => {
+    let cleaned = url;
+    if (url.charAt(0) === '/') {
+        cleaned = url.slice(1);
+    }
+    return cleaned;
+}
 
-file.then((contents) => {
-    const html = Mustache.render(contents, view);
+//Create HTTP server and listen on port 3000 for requests
+const server = http.createServer((req, res) => {
 
-    //Create HTTP server and listen on port 3000 for requests
-    const server = http.createServer((req, res) => {
+    const url = cleanUrl(req.url);
+    console.log('req');
+    console.log('req');
+    console.log('req');
+    console.log(url);
+    console.log(Object.keys(renderMap))
 
-        //Set the response HTTP header with HTTP status and Content type
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'text/html; charset=utf-8');
-        res.end(html);
-    });
+    const render = renderMap[url];
+    console.log(render)
+    if (!render) {
+        res.statusCode = 404;
+        res.end(null);
+        return;
+    }
 
-    //listen for request on port 3000, and as a callback function have the port listened on logged
-    server.listen(port, hostname, () => {
-        console.log(`Server running at http://${hostname}:${port}/`);
-    });
+    //Set the response HTTP header with HTTP status and Content type
+    res.statusCode = 200;
+    res.setHeader('Content-Type', render.contentType);
+    res.end(render.output);
+});
+
+//listen for request on port 3000, and as a callback function have the port listened on logged
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}/`);
 });
 

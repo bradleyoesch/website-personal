@@ -1,0 +1,8 @@
+References
+==========
+
+Set up npm, node, express (skipped express)
+https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/development_environment
+
+Adding lint on pre-commit (skipped stylelint)
+https://medium.com/@kitson.mac/run-lint-unit-tests-on-git-commit-using-npm-pre-commit-package-98e4d81b0491

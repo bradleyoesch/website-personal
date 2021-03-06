@@ -2,6 +2,7 @@ import fs from 'fs';
 import http from 'http';
 
 import * as Build from './build.js';
+import * as Strings from './strings.js';
 
 import { Paths } from './constants.js';
 
@@ -15,7 +16,11 @@ const mapUrl = (oldUrl) => {
         url = url.slice(1);
     }
     if (url === '') {
-        url = 'index.html';
+        url = 'index';
+    }
+    if (!Strings.hasExtension(url)) {
+        // assume it's an html file for now
+        url = `${url}.html`;
     }
     return `${Paths.BASE_OUTPUT}${url}`;
 };

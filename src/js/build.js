@@ -47,6 +47,9 @@ const createDirectories = (path) => {
  * Generate html files, static files and write
  */
 export const writeHtmlAndStatics = () => {
+    // remove everything in output directory
+    fs.rmdirSync(`${Paths.BASE_OUTPUT}`, { recursive: true });
+
     // create base template to insert each page template into
     const baseHtmlPath = `${Paths.TEMPLATES_INPUT}base.html`;
     const baseTemplate = fs.readFileSync(baseHtmlPath, { encoding: 'utf8' });

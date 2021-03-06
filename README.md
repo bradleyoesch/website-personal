@@ -13,3 +13,13 @@ node src/js/app.js
 ```
 
 Server will run at [http://127.0.0.1:3000/](http://127.0.0.1:3000/).
+
+Create pages with:
+```bash
+node src/js/page.js create filename1 ... filenameN
+```
+
+Delete pages with:
+```bash
+node src/js/page.js rm filename1 ... filenameN
+```

@@ -11,3 +11,7 @@ export const getExtensionlessName = (s) => {
     const split = s.split('.')[0].split('/');
     return split[split.length - 1];
 };
+
+export const hasExtension = (s) => {
+    return s.indexOf('.') >= 0;
+};

@@ -45,7 +45,7 @@ const createRenderObject = (output, fileType) => {
 const getHtmlPathKey = (path) => {
     const key = path.replace(Paths.TEMPLATES, '').replace('.html', '');
     return key ? key !== Page.INDEX.toLowerCase() : '';
-}
+};
 
 export const buildRenderMap = () => {
     const renderMap = {};
@@ -69,7 +69,7 @@ export const buildRenderMap = () => {
         };
         const html = Mustache.render(template, view);
 
-        const key = path.replace(Paths.TEMPLATES, '').replace('.html', '')
+        const key = getHtmlPathKey(path);
         renderMap[key] = createRenderObject(html, FileType.HTML);
     });
 

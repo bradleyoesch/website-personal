@@ -14,7 +14,7 @@ const cleanUrl = (url) => {
         cleaned = url.slice(1);
     }
     return cleaned;
-}
+};
 
 //Create HTTP server and listen on port 3000 for requests
 const server = http.createServer((req, res) => {
@@ -24,10 +24,10 @@ const server = http.createServer((req, res) => {
     console.log('req');
     console.log('req');
     console.log(url);
-    console.log(Object.keys(renderMap))
+    console.log(Object.keys(renderMap));
 
     const render = renderMap[url];
-    console.log(render)
+    console.log(render);
     if (!render) {
         res.statusCode = 404;
         res.end(null);

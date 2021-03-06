@@ -13,7 +13,7 @@ const FilterPublic = {
     pages: (page) => page !== Page.BASE,
     templates: (fileName) => !fileName.endsWith('base.html'),
     styles: (fileName) => !(fileName.endsWith('base.scss') || fileName.endsWith('normalize.scss'))
-}
+};
 
 const FileType = {
     HTML: 'HTML',

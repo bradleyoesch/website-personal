@@ -1,13 +1,13 @@
 import http from 'http';
 
-import * as Files from './files.js';
+import * as Views from './views.js';
 import * as Strings from './strings.js';
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
 
-const pathMap = Files.buildPathMap();
+const pathMap = Views.buildPathMap();
 
 const server = http.createServer((req, res) => {
 

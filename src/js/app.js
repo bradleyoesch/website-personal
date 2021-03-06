@@ -1,34 +1,24 @@
 import http from 'http';
 
 import * as Files from './files.js';
+import * as Strings from './strings.js';
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
 
-const renderMap = Files.buildRenderMap();
+const pathMap = Files.buildPathMap();
 
-const cleanUrl = (url) => {
-    let cleaned = url;
-    if (url.charAt(0) === '/') {
-        cleaned = url.slice(1);
-    }
-    return cleaned;
-};
-
-//Create HTTP server and listen on port 3000 for requests
 const server = http.createServer((req, res) => {
 
-    const url = cleanUrl(req.url);
-
-    const render = renderMap[url];
+    const url = Strings.cleanUrl(req.url);
+    const render = pathMap[url];
     if (!render) {
         res.statusCode = 404;
         res.end(null);
         return;
     }
 
-    //Set the response HTTP header with HTTP status and Content type
     res.statusCode = 200;
     res.setHeader('Content-Type', render.contentType);
     res.end(render.output);

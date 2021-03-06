@@ -1,3 +1,4 @@
 export const Page = {
-    BASE: 'BASE'
+    BASE: 'BASE',
+    INDEX: 'INDEX'
 };

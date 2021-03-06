@@ -20,14 +20,8 @@ const cleanUrl = (url) => {
 const server = http.createServer((req, res) => {
 
     const url = cleanUrl(req.url);
-    console.log('req');
-    console.log('req');
-    console.log('req');
-    console.log(url);
-    console.log(Object.keys(renderMap));
 
     const render = renderMap[url];
-    console.log(render);
     if (!render) {
         res.statusCode = 404;
         res.end(null);
@@ -42,6 +36,7 @@ const server = http.createServer((req, res) => {
 
 //listen for request on port 3000, and as a callback function have the port listened on logged
 server.listen(port, hostname, () => {
+    // eslint-disable-next-line no-console
     console.log(`Server running at http://${hostname}:${port}/`);
 });
 

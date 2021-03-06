@@ -5,7 +5,8 @@
   "type": "module",
   "main": "src/js/app.js",
   "scripts": {
-    "clean": "rm -rf node_modules/ static/",
+    "clean": "rm -rf node_modules/ && clean-statics",
+    "clean-statics": "rm -rf static/",
     "lint": "eslint src/js & eslint --fix src/js",
     "lint-all": "lint & lint-styles",
     "lint-styles": "stylelint \"src/scss/**/*.scss\" & stylelint --fix \"src/scss/**/*.scss\"",

@@ -9,6 +9,12 @@ export const Paths = {
     STYLES: 'static/styles/'
 };
 
+const FilterPublic = {
+    pages: (page) => page !== Page.BASE,
+    templates: (fileName) => !fileName.endsWith('base.html'),
+    styles: (fileName) => !(fileName.endsWith('base.scss') || fileName.endsWith('normalize.scss'))
+}
+
 const FileType = {
     HTML: 'HTML',
     CSS: 'CSS'
@@ -22,17 +28,15 @@ const getTitle = (title) => {
  * Render the template and return the result
  * TODO: actual content
  */
-const getRenderedTemplate = (fileName) => {
+const getRenderedTemplate = (baseTemplate, fileName) => {
     const path = `${Paths.TEMPLATES}${fileName}`;
     const template = fs.readFileSync(path, { encoding: 'utf8' });
 
     const page = Strings.getExtensionlessName(fileName);
-    const view = {
-        page,
-        title: getTitle(page),
-        content: 'Hello World',
-    };
-    return Mustache.render(template, view);
+    const title = getTitle(page);
+    const content = Mustache.render(template, {});
+    const view = { page, title, content };
+    return Mustache.render(baseTemplate, view);
 };
 
 const getContentType = (fileType) => {
@@ -68,23 +72,25 @@ export const buildPathMap = () => {
     const pathMap = {};
 
     // generate all static files first
-    // TODO: remove index filter once page exists, probably replace with base
-    Object.values(Page).filter((page) => page !== Page.INDEX).forEach((page) => {
+    Object.values(Page).filter(FilterPublic.pages).forEach((page) => {
         Sass.generateCssFor(page);
     });
 
     // add template converted html to map
-    fs.readdirSync(Paths.TEMPLATES).forEach((fileName) => {
+    const baseHtmlPath = `${Paths.TEMPLATES}base.html`;
+    const baseTemplate = fs.readFileSync(baseHtmlPath, { encoding: 'utf8' });
+
+    fs.readdirSync(Paths.TEMPLATES).filter(FilterPublic.templates).forEach((fileName) => {
         const name = Strings.getExtensionlessName(fileName);
         const key = name !== Page.INDEX.toLowerCase() ? name : '';
 
-        const html = getRenderedTemplate(fileName);
+        const html = getRenderedTemplate(baseTemplate, fileName);
 
         pathMap[key] = createRenderObject(html, FileType.HTML);
     });
 
     // add generated styles to map
-    fs.readdirSync(Paths.STYLES).forEach((fileName) => {
+    fs.readdirSync(Paths.STYLES).filter(FilterPublic.styles).forEach((fileName) => {
         const path = `${Paths.STYLES}${fileName}`;
         const styles = fs.readFileSync(path, { encoding: 'utf8' });
 

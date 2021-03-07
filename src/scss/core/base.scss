@@ -2,9 +2,7 @@
 @use 'variables' as *;
 @use '../mixins/text';
 @use 'helpers';
-
 @use 'nav';
-
 
 html,
 body {
@@ -43,11 +41,13 @@ h4 {
 
 h1 {
   @include text.header(1);
+
   letter-spacing: -1.5px;
 }
 
 h2 {
   @include text.header(2);
+
   letter-spacing: -0.5px;
 }
 

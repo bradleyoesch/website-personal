@@ -1,0 +1,77 @@
+@use 'math';
+
+
+/**
+ * Set header sizing properly
+ */
+@mixin header($priority) {
+  $ratio: 1.35;
+  $max-priority: 4;
+  // i.e. 1 -> 4, 2 -> 3, 3 -> 2, 4 -> 1
+  $exponent: $priority * -1 + 1 + $max-priority;
+  $size: math.pow($ratio, $exponent);
+
+  font-size: #{$size}rem;
+  line-height: 1;
+}
+
+@mixin _text-underline-crop($background) {
+  text-shadow:
+    0.03em 0 $background,
+    -0.03em 0 $background,
+    0 0.03em $background,
+    0 -0.03em $background,
+    0.06em 0 $background,
+    -0.06em 0 $background,
+    0.09em 0 $background,
+    -0.09em 0 $background,
+    0.12em 0 $background,
+    -0.12em 0 $background,
+    0.15em 0 $background,
+    -0.15em 0 $background;
+}
+
+@mixin _text-background($color-bg, $color-text) {
+  background-image: linear-gradient($color-text, $color-text);
+  background-size: 1px 1px;
+  background-repeat: repeat-x;
+  background-position: 0% 95%;
+}
+
+@mixin _text-selection($selection) {
+  &::selection {
+    @include _text-underline-crop($selection);
+
+    background: $selection;
+  }
+
+  &::-moz-selection {
+    @include _text-underline-crop($selection);
+
+    background: $selection;
+  }
+}
+
+/**
+ * Fancy underline
+ */
+@mixin underline($background, $text, $selection) {
+  @include _text-underline-crop($background);
+  @include _text-background($background, $text);
+  @include _text-selection($selection);
+
+  color: $text;
+  text-decoration: none;
+
+  *,
+  *::after,
+  &::after,
+  *::before,
+  &::before {
+    text-shadow: none;
+  }
+
+  &:visited {
+    color: $text;
+  }
+}

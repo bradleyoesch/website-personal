@@ -1,0 +1,75 @@
+@use 'normalize';
+@use 'variables' as *;
+@use '../mixins/text';
+@use 'helpers';
+
+@use 'nav';
+
+
+html,
+body {
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #333;
+  background-color: #fff;
+  font-size: #{$base-font-size};
+  line-height: $base-line-height;
+  word-spacing: 0.05rem;
+  letter-spacing: 0.25px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ol,
+ul {
+  margin: 0 0 #{$base-vertical-rhythm};
+}
+
+h1,
+h2,
+h3,
+h4 {
+  word-spacing: -0.125rem;
+}
+
+h1 {
+  @include text.header(1);
+  letter-spacing: -1.5px;
+}
+
+h2 {
+  @include text.header(2);
+  letter-spacing: -0.5px;
+}
+
+h3 {
+  @include text.header(3);
+}
+
+h4 {
+  @include text.header(4);
+}
+
+p {
+  max-width: 36rem;
+  margin: 0 0 #{$base-vertical-rhythm};
+}
+
+a {
+  @include text.underline(#fff, #6590d4, #546888);
+}
+
+.content {
+  max-width: 900px;
+  margin: $base-vertical-rhythm auto;
+  padding: 0 1rem;
+}

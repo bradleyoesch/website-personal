@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { Paths } from './constants.js';
+import { Path } from './constants.js';
 
 
 // eslint-disable-next-line no-undef
@@ -18,13 +18,13 @@ const Args = {
 if (Args.CREATE.includes(command)) {
     args.forEach((arg) => {
         try {
-            const templateFile = `${Paths.TEMPLATES_INPUT}${arg}.html`;
-            const scssFile = `${Paths.STYLES_INPUT}${arg}.scss`;
+            const templateFile = `${Path.TEMPLATES_INPUT}${arg}.html`;
+            const scssFile = `${Path.STYLES_INPUT}${arg}.scss`;
 
-            fs.copyFileSync(`${Paths.TEMPLATES_INPUT}index.html`, `${Paths.TEMPLATES_INPUT}${arg}.html`);
+            fs.copyFileSync(`${Path.TEMPLATES_INPUT}index.html`, `${Path.TEMPLATES_INPUT}${arg}.html`);
             console.log(`Created ${templateFile}`);
 
-            fs.copyFileSync(`${Paths.STYLES_INPUT}index.scss`, `${Paths.STYLES_INPUT}${arg}.scss`);
+            fs.copyFileSync(`${Path.STYLES_INPUT}index.scss`, `${Path.STYLES_INPUT}${arg}.scss`);
             console.log(`Created ${scssFile}`);
         } catch (err) {
             console.error(`Error trying to create ${arg} page: `, err.message);
@@ -35,13 +35,13 @@ if (Args.CREATE.includes(command)) {
 if (Args.DELETE.includes(command)) {
     args.forEach((arg) => {
         try {
-            const templateFile = `${Paths.TEMPLATES_INPUT}${arg}.html`;
-            const scssFile = `${Paths.STYLES_INPUT}${arg}.scss`;
+            const templateFile = `${Path.TEMPLATES_INPUT}${arg}.html`;
+            const scssFile = `${Path.STYLES_INPUT}${arg}.scss`;
 
-            fs.unlinkSync(`${Paths.TEMPLATES_INPUT}${arg}.html`);
+            fs.unlinkSync(`${Path.TEMPLATES_INPUT}${arg}.html`);
             console.log(`Deleted ${templateFile}`);
 
-            fs.unlinkSync(`${Paths.STYLES_INPUT}${arg}.scss`);
+            fs.unlinkSync(`${Path.STYLES_INPUT}${arg}.scss`);
             console.log(`Deleted ${scssFile}`);
         } catch (err) {
             console.error(`Error trying to delete ${arg} page: `, err.message);

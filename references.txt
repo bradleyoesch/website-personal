@@ -4,5 +4,14 @@ References
 Set up npm, node, express (skipped express)
 https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/development_environment
 
-Adding lint on pre-commit (skipped stylelint)
+Adding lint on pre-commit
 https://medium.com/@kitson.mac/run-lint-unit-tests-on-git-commit-using-npm-pre-commit-package-98e4d81b0491
+
+Adding watch feature
+https://stackoverflow.com/questions/36584637/nodejs-watch-directory-for-changes-in-background-and-perform-some-action
+
+Example design system
+http://ux.mailchimp.com
+
+Online typography
+http://webtypography.net/2.1.2

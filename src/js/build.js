@@ -25,14 +25,6 @@ const getRenderedTemplate = (baseTemplate, file) => {
     return mustache.render(baseTemplate, view);
 };
 
-/**
- * Functions to filter to only public files
- */
-const OnlyPublic = {
-    templates: (filename) => !filename.endsWith('base.html'),
-    styles: (filename) => !(filename.endsWith('base.scss') || filename.endsWith('normalize.scss'))
-};
-
 const createDirectories = (path) => {
     if (!fs.existsSync(path)) {
         fs.mkdirSync(path, { recursive: true }, (err) => {
@@ -44,7 +36,7 @@ const createDirectories = (path) => {
 };
 
 const createBaseTemplate = () => {
-    const baseHtmlPath = `${Path.TEMPLATES_INPUT}base.html`;
+    const baseHtmlPath = `${Path.TEMPLATES_INPUT}core/base.html`;
     return fs.readFileSync(baseHtmlPath, { encoding: 'utf8' });
 };
 
@@ -68,6 +60,12 @@ export const writeCss = (path, filename) => {
     fs.writeFileSync(`${Path.STYLES_OUTPUT}${name}.css`, css);
 };
 
+const readFilesOf = (path) => {
+    return fs.readdirSync(path, { withFileTypes: true })
+        .filter((result) => result.isFile())
+        .map((result) => result.name);
+};
+
 /**
  * Generate html files, static files and write
  */
@@ -78,12 +76,12 @@ export const writeHtmlAndStatics = () => {
     const baseTemplate = createBaseTemplate();
 
     // write public html files
-    fs.readdirSync(Path.TEMPLATES_INPUT).filter(OnlyPublic.templates).forEach((filename) => {
+    readFilesOf(Path.TEMPLATES_INPUT).forEach((filename) => {
         writeHtml(Path.TEMPLATES_INPUT, filename, baseTemplate);
     });
 
     // write public css files
-    fs.readdirSync(Path.STYLES_INPUT).filter(OnlyPublic.styles).forEach((filename) => {
+    readFilesOf(Path.STYLES_INPUT).forEach((filename) => {
         writeCss(Path.STYLES_INPUT, filename);
     });
 };

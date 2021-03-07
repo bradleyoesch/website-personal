@@ -29,8 +29,8 @@ node src/js/page.js rm filename1 ... filenameN
 
 ## Updating Pages
 
-The html is generated with [mustache templates](https://mustache.github.io/) in the `src/templates/` dir. The filename will correspond to the url path. All pages use `base.html` as the base template.
+The html is generated with [mustache templates](https://mustache.github.io/) which live in the `src/templates/` dir. The filename will correspond to the url path. All pages use `base.html` as the base template.
 
-Update the styles in the `src/scss/` dir. The filename will correspond to the url path. All pages import `base.scss` as the base stylesheet.
+The css is generated with [SASS](https://sass-lang.com/) which live in the `src/scss/` dir. The filename will correspond to the url path. All pages import `base.scss` as the base stylesheet.
 
 Running the app or watching for file changes will render the templates into html and compile the scss into css, then store them in `build/`, where the server looks to serve the files for the browser.

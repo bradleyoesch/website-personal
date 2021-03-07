@@ -1,5 +1,5 @@
 const BASE_OUTPUT = 'build/';
-export const Paths = {
+export const Path = {
     BASE_OUTPUT: BASE_OUTPUT,
     TEMPLATES_INPUT: 'src/templates/',
     TEMPLATES_OUTPUT: BASE_OUTPUT,

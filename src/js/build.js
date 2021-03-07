@@ -4,7 +4,7 @@ import sass from 'sass';
 
 import * as Strings from './strings.js';
 
-import { Paths } from './constants.js';
+import { Path } from './constants.js';
 
 
 const getTitle = (title) => {
@@ -29,8 +29,8 @@ const getRenderedTemplate = (baseTemplate, file) => {
  * Functions to filter to only public files
  */
 const OnlyPublic = {
-    templates: (fileName) => !fileName.endsWith('base.html'),
-    styles: (fileName) => !(fileName.endsWith('base.scss') || fileName.endsWith('normalize.scss'))
+    templates: (filename) => !filename.endsWith('base.html'),
+    styles: (filename) => !(filename.endsWith('base.scss') || filename.endsWith('normalize.scss'))
 };
 
 const createDirectories = (path) => {
@@ -43,33 +43,47 @@ const createDirectories = (path) => {
     }
 };
 
+const createBaseTemplate = () => {
+    const baseHtmlPath = `${Path.TEMPLATES_INPUT}base.html`;
+    return fs.readFileSync(baseHtmlPath, { encoding: 'utf8' });
+};
+
+export const writeHtml = (path, filename, baseTemplate) => {
+    if (!baseTemplate) {
+        baseTemplate = createBaseTemplate();
+    }
+    const file = `${path}${filename}`;
+    const html = getRenderedTemplate(baseTemplate, file);
+
+    createDirectories(Path.TEMPLATES_OUTPUT);
+    fs.writeFileSync(`${Path.TEMPLATES_OUTPUT}${filename}`, html);
+};
+
+export const writeCss = (path, filename) => {
+    const file = `${path}${filename}`;
+    const { css } = sass.renderSync({ file });
+
+    const name = Strings.getExtensionlessName(filename);
+    createDirectories(Path.STYLES_OUTPUT);
+    fs.writeFileSync(`${Path.STYLES_OUTPUT}${name}.css`, css);
+};
+
 /**
  * Generate html files, static files and write
  */
 export const writeHtmlAndStatics = () => {
     // remove everything in output directory
-    fs.rmdirSync(`${Paths.BASE_OUTPUT}`, { recursive: true });
+    fs.rmdirSync(`${Path.BASE_OUTPUT}`, { recursive: true });
 
-    // create base template to insert each page template into
-    const baseHtmlPath = `${Paths.TEMPLATES_INPUT}base.html`;
-    const baseTemplate = fs.readFileSync(baseHtmlPath, { encoding: 'utf8' });
+    const baseTemplate = createBaseTemplate();
 
     // write public html files
-    fs.readdirSync(Paths.TEMPLATES_INPUT).filter(OnlyPublic.templates).forEach((fileName) => {
-        const file = `${Paths.TEMPLATES_INPUT}${fileName}`;
-        const html = getRenderedTemplate(baseTemplate, file);
-
-        createDirectories(Paths.TEMPLATES_OUTPUT);
-        fs.writeFileSync(`${Paths.TEMPLATES_OUTPUT}${fileName}`, html);
+    fs.readdirSync(Path.TEMPLATES_INPUT).filter(OnlyPublic.templates).forEach((filename) => {
+        writeHtml(Path.TEMPLATES_INPUT, filename, baseTemplate);
     });
 
     // write public css files
-    fs.readdirSync(Paths.STYLES_INPUT).filter(OnlyPublic.styles).forEach((fileName) => {
-        const file = `${Paths.STYLES_INPUT}${fileName}`;
-        const { css } = sass.renderSync({ file });
-
-        const name = Strings.getExtensionlessName(fileName);
-        createDirectories(Paths.STYLES_OUTPUT);
-        fs.writeFileSync(`${Paths.STYLES_OUTPUT}${name}.css`, css);
+    fs.readdirSync(Path.STYLES_INPUT).filter(OnlyPublic.styles).forEach((filename) => {
+        writeCss(Path.STYLES_INPUT, filename);
     });
 };

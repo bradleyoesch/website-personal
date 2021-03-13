@@ -4,8 +4,12 @@ import http from 'http';
 import * as Build from './build.js';
 import * as Strings from './strings.js';
 
+import { Logger } from './logger.js';
 import { Path } from './constants.js';
 import { watch } from './watch.js';
+
+
+const LOG = new Logger(import.meta.url);
 
 
 // eslint-disable-next-line no-undef
@@ -55,8 +59,7 @@ const server = http.createServer((req, res) => {
         res.setHeader('Content-Type', contentType);
         res.end(file);
     } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error(err);
+        LOG.error(err);
 
         res.statusCode = 404;
         res.end(null);
@@ -66,16 +69,14 @@ const server = http.createServer((req, res) => {
 
 //listen for request on port 3000, and as a callback function have the port listened on logged
 server.listen(port, hostname, () => {
-    /* eslint-disable no-console */
-    console.log(`Server running at http://${hostname}:${port}/`);
+    LOG.info(`Server running at http://${hostname}:${port}/`);
 
     if (argv.includes('--watch') || argv.includes('-w')) {
-        console.log(`Watching ${Path.TEMPLATES_INPUT}`);
+        LOG.log(`Watching ${Path.TEMPLATES_INPUT}`);
         watch(Path.TEMPLATES_INPUT, Build.writeHtml);
 
-        console.log(`Watching ${Path.STYLES_INPUT}`);
+        LOG.log(`Watching ${Path.STYLES_INPUT}`);
         watch(Path.STYLES_INPUT, Build.writeCss);
     }
-    /* eslint-enable no-console */
 });
 

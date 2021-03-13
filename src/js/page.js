@@ -1,6 +1,10 @@
 import fs from 'fs';
 
+import { Logger } from './logger.js';
 import { Path } from './constants.js';
+
+
+const LOG = new Logger(import.meta.url);
 
 
 // eslint-disable-next-line no-undef
@@ -14,7 +18,6 @@ const Args = {
 };
 
 
-/* eslint-disable no-console */
 if (Args.CREATE.includes(command)) {
     args.forEach((arg) => {
         try {
@@ -22,12 +25,12 @@ if (Args.CREATE.includes(command)) {
             const scssFile = `${Path.STYLES_INPUT}${arg}.scss`;
 
             fs.copyFileSync(`${Path.TEMPLATES_INPUT}index.html`, `${Path.TEMPLATES_INPUT}${arg}.html`);
-            console.log(`Created ${templateFile}`);
+            LOG.log(`Created ${templateFile}`);
 
             fs.copyFileSync(`${Path.STYLES_INPUT}index.scss`, `${Path.STYLES_INPUT}${arg}.scss`);
-            console.log(`Created ${scssFile}`);
+            LOG.log(`Created ${scssFile}`);
         } catch (err) {
-            console.error(`Error trying to create ${arg} page: `, err.message);
+            LOG.error(`Error trying to create ${arg} page: `, err.message);
         }
     });
 }
@@ -39,14 +42,13 @@ if (Args.DELETE.includes(command)) {
             const scssFile = `${Path.STYLES_INPUT}${arg}.scss`;
 
             fs.unlinkSync(`${Path.TEMPLATES_INPUT}${arg}.html`);
-            console.log(`Deleted ${templateFile}`);
+            LOG.log(`Deleted ${templateFile}`);
 
             fs.unlinkSync(`${Path.STYLES_INPUT}${arg}.scss`);
-            console.log(`Deleted ${scssFile}`);
+            LOG.log(`Deleted ${scssFile}`);
         } catch (err) {
-            console.error(`Error trying to delete ${arg} page: `, err.message);
+            LOG.error(`Error trying to delete ${arg} page: `, err.message);
         }
     });
 }
-/* eslint-enable no-console */
 

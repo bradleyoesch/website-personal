@@ -8,8 +8,9 @@
     "clean": "rm -rf build/",
     "clean-all": "rm -rf node_modules/ && clean",
     "lint": "eslint src/js & eslint --fix src/js",
-    "lint-all": "lint & lint-styles",
+    "lint-all": "npm run lint & npm run lint-styles",
     "lint-styles": "stylelint \"src/scss/**/*.scss\" & stylelint --fix \"src/scss/**/*.scss\"",
+    "start": "BASE_PATH=`pwd` node src/js/app.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "pre-commit": [

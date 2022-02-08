@@ -1,0 +1,271 @@
+html, body {
+    font-family: 'Poppins', Helvetica Neue, Helvetica, Arial, Liberation Sans, Roboto, Noto, sans-serif;
+    overflow-x: hidden;
+}
+html {
+    background-color: #d9ccb9;
+}
+body {
+    /*background-color: #a2bec4;*/
+    /*background-image: url("http://bradleyoesch.com/img/bg-test.jpg");*/
+    background-image: url("http://bradleyoesch.com/img/website-tile.jpg");
+    background-repeat: repeat;
+}
+strong {
+    font-weight: 600 !important;
+}
+
+/* overrides */
+
+.content {
+    margin-bottom: 0 !important;
+}
+
+.container {
+    max-width: 70rem !important;
+    padding: 0 1rem;
+}
+
+.section {
+    padding: 2rem;
+}
+
+.select select {
+    display: inline-block;
+}
+
+a {
+    color: #0070ba;
+
+    &:hover, &:active {
+        color: #4fadea;
+    }
+}
+
+.label {
+    font-weight: 600 !important;
+}
+
+.sublabel {
+    font-weight: initial;
+    font-size: .75rem;
+    color: #7a7a7a;
+
+    sup {
+        font-size: .45rem;
+        color: #c5c5c5;
+    }
+}
+
+.select:not(.is-multiple):not(.is-loading)::after {
+    border-color: #0070ba;
+}
+
+/* mine */
+
+
+.mental-health-decliners {
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--footer {
+        -webkit-filter: invert(100%);
+        filter: invert(100%);
+    }
+
+    .decliner {
+        height: 70%;
+        margin: 0 1rem;
+
+        > img {
+            height: 100%;
+        }
+    }
+}
+
+.extra-bold {
+    font-weight: 800 !important;
+}
+
+.main {
+    background-color: #ffffff;
+    border-radius: 2rem 2rem 0 0;
+    margin-top: 2rem;
+
+    @media screen and (max-width: 768px) {
+        & {
+            padding-bottom: 3rem;
+        }
+    }
+}
+
+.header-img {
+    background-image: url("http://bradleyoesch.com/img/website-nav.jpg");
+    height: 30px;
+    background-position: top;
+    background-size: cover;
+    width: 100%;
+    background-repeat: repeat-x;
+}
+
+@media screen and (max-width: 768px) {
+    .top-shadow {
+        box-shadow: 0 1rem 0.7rem 1rem rgb(0 0 0 / 30%);
+        -webkit-box-shadow: 0 1rem 0.7rem 1rem rgb(0 0 0 / 30%);
+        -moz-box-shadow: 0 1rem 0.7rem 1rem rgb(0 0 0 / 30%);
+    }
+}
+
+.buy-button-container {
+    background-color: #ffffff;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    margin-left: -1rem;
+    padding: .75rem;
+    z-index: 99;
+    transition: bottom .3s;
+
+    &.is-mobile-pay--closed {
+        bottom: -80px;
+    }
+}
+
+.buy-button {
+    background-color: #0070ba;
+    color: #ffffff;
+    border: 0;
+    font-weight: 600;
+
+    &:hover {
+        filter: brightness(0.95);
+        color: #ffffff;
+    }
+}
+
+.right-column {
+
+    > div {
+        width: 300px;
+    }
+
+    @media screen and (max-width: 768px) {
+        & {
+            position: fixed;
+            bottom: 0;
+            background-color: #ffffff;
+            width: 100%;
+            margin-left: -2.25rem;
+            max-height: 100vh;
+            overflow-y: auto;
+            z-index: 89;
+            transition: all .3s;
+        }
+
+        &.is-mobile-pay--closed {
+            bottom: -600px;
+            box-shadow: none;
+        }
+
+        > div {
+            width: 100%;
+        }
+    }
+
+    .map {
+        height: 300px;
+        width: 300px;
+        margin-bottom: 1rem;
+    }
+
+}
+
+.click-me {
+    position: relative;
+    text-align: center;
+
+    .icon {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    .picture {
+        max-width: 400px;
+        width: 100%;
+    }
+}
+
+.mobile-pay-cover {
+    position: absolute;
+    background-color: #000000;
+    opacity: .3;
+    height: 100%;
+    width: 100%;
+    top: -62px;
+    left: 0;
+    transition: opacity .3s;
+    z-index: 79;
+
+    &.is-mobile-pay--closed {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+}
+
+.doodle {
+    position: absolute;
+    top: -62px;
+
+    &.baby-babe {
+        top: 110px;
+        right: -17px;
+        height: 70px;
+    }
+
+    &.sexy-diglet {
+        display: none;
+        top: 730px;
+        right: -50px;
+        height: 60px;
+    }
+    &.aint-no-frozen-yogurt {
+        top: 360px;
+        left: -33px;
+        height: 100px;
+    }
+    &.balloon-boy {
+        display: none;
+        top: 1480px;
+        left: -40px;
+        height: 80px;
+    }
+    &.chomp-chomp {
+        top: -53px;
+        left: 68%;
+        height: 90px;
+    }
+    &.carefully-a-hero {
+        top: 810px;
+        left: 0px;
+        height: 50px;
+    }
+    &.ob-oinkquist {
+        top: 730px;
+        right: -50px;
+        height: 100px;
+
+        @media screen and (max-width: 768px) {
+            & {
+                top: 940px;
+                right: -138px;
+            }
+        }
+    }
+}
+

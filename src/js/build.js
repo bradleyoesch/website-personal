@@ -53,11 +53,25 @@ export const writeHtml = (path, filename, baseTemplate) => {
 
 export const writeCss = (path, filename) => {
     const file = `${path}${filename}`;
-    const { css } = sass.renderSync({ file });
+    let css;
+    try {
+        const result = sass.renderSync({ file });
+        css = result.css;
+    } catch (err) {
+        LOG.error(err);
+        css = '';
+    }
 
     const name = Strings.getExtensionlessName(filename);
     createDirectories(Path.STYLES_OUTPUT);
     fs.writeFileSync(`${Path.STYLES_OUTPUT}${name}.css`, css);
+};
+
+export const writeStatics = (path, filename) => {
+    const file = `${path}${filename}`;
+
+    createDirectories(Path.STATIC_OUTPUT);
+    fs.copyFile(file, `${Path.STATIC_OUTPUT}${filename}`, () => {});
 };
 
 const readFilesOf = (path) => {

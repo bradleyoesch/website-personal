@@ -14,38 +14,43 @@
   line-height: 1;
 }
 
-@mixin _text-underline-crop($background) {
+@mixin _text-underline-crop($background, $base-crop-size) {
+  $size2: $base-crop-size * 2;
+  $size3: $base-crop-size * 3;
+  $size4: $base-crop-size * 4;
+  $size5: $base-crop-size * 5;
+
   text-shadow:
-    0.03em 0 $background,
-    -0.03em 0 $background,
-    0 0.03em $background,
-    0 -0.03em $background,
-    0.06em 0 $background,
-    -0.06em 0 $background,
-    0.09em 0 $background,
-    -0.09em 0 $background,
-    0.12em 0 $background,
-    -0.12em 0 $background,
-    0.15em 0 $background,
-    -0.15em 0 $background;
+    $base-crop-size 0 $background,
+    -#{$base-crop-size} 0 $background,
+    0 $base-crop-size $background,
+    0 -#{$base-crop-size} $background,
+    $size2 0 $background,
+    -#{$size2} 0 $background,
+    $size3 0 $background,
+    -#{$size3} 0 $background,
+    $size4 0 $background,
+    -#{$size4} 0 $background,
+    $size5 0 $background,
+    -#{$size5} 0 $background;
 }
 
-@mixin _text-background($color-bg, $color-text) {
+@mixin _text-background($color-bg, $color-text, $base-position) {
   background-image: linear-gradient($color-text, $color-text);
   background-size: 1px 1px;
   background-repeat: repeat-x;
-  background-position: 0% 95%;
+  background-position: 0% $base-position;
 }
 
-@mixin _text-selection($selection) {
+@mixin _text-selection($selection, $base-crop-size) {
   &::selection {
-    @include _text-underline-crop($selection);
+    @include _text-underline-crop($selection, $base-crop-size);
 
     background: $selection;
   }
 
   &::-moz-selection {
-    @include _text-underline-crop($selection);
+    @include _text-underline-crop($selection, $base-crop-size);
 
     background: $selection;
   }
@@ -54,10 +59,10 @@
 /**
  * Fancy underline
  */
-@mixin underline($background, $text, $selection) {
-  @include _text-underline-crop($background);
-  @include _text-background($background, $text);
-  @include _text-selection($selection);
+@mixin underline($background, $text, $selection, $base-crop-size: 0.03em, $base-position: 95%) {
+  @include _text-underline-crop($background, $base-crop-size);
+  @include _text-background($background, $text, $base-position);
+  @include _text-selection($selection, $base-crop-size);
 
   color: $text;
   text-decoration: none;

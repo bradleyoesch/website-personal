@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{title}}</title>
+
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <meta name="description" content="Personal website for Bradley Oesch">
+  <meta name="keywords" content="bradley, oesch, bradley oesch">
+
+  <!-- <link rel="shortcut icon" type="image/png" href="static/images/favicon.ico" /> -->
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Judson:ital,wght@0,400;0,700;1,400&family=Quando&family=Roboto+Mono&family=Radley:ital@0;1&family=Heebo:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="static/styles/{{page}}.css">
+</head>
+
+<body>
+  <nav class="nav-menu">
+    <ul class="nav-menu__list">
+      <li class="nav-menu__item">
+        <button class="nav-menu--close">&times;</button>
+      </li>
+      <li class="nav-menu__item"><a href="/comedy">Comedy</a></li>
+      <li class="nav-menu__item"><a href="/software">Software</a></li>
+      <li class="nav-menu__item"><a href="/resume">Resume</a></li>
+      <li class="nav-menu__item"><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <div class="content">
+    <div>
+{{{content}}}
+    </div>
+  </div>
+
+
+  <div class="footer-fetish container-fluid">
+  </div>
+
+  <!-- <script type="text/javascript" src="static/scripts/index.js"></script> -->
+</body>
+</html>

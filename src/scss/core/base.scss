@@ -7,13 +7,11 @@
 html,
 body {
   box-sizing: border-box;
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Radley', Georgia, Times New Roman, serif;
   color: #333;
   background-color: #fff;
   font-size: #{$base-font-size};
   line-height: $base-line-height;
-  word-spacing: 0.05rem;
-  letter-spacing: 0.25px;
 }
 
 *,
@@ -37,6 +35,11 @@ h2,
 h3,
 h4 {
   word-spacing: -0.125rem;
+
+  /* font-family: 'Roboto Mono', Courier New, monospace; */
+
+  /* font-family: 'Quando', Georgia, Times New Roman, serif; */
+  font-family: 'Heebo', Georgia, Times New Roman, serif;
 }
 
 h1 {
@@ -65,7 +68,7 @@ p {
 }
 
 a {
-  @include text.underline(#fff, #6590d4, #546888);
+  @include text.underline(#fff, #6590d4, #546888, 0.02em, 88%);
 }
 
 .content {

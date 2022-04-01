@@ -1,0 +1,761 @@
+/* **** */
+/* base */
+/* **** */
+html, body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  color: #111;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: #03bec6;
+}
+a:focus, a:hover {
+  color: #0085a1;
+  text-decoration: none;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.full-height {
+  height: 100% !important;
+}
+
+.arrow:after {
+  position: relative;
+  vertical-align: middle;
+  pointer-events: none;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-right-width: 1px;
+  border-right-style: solid;
+  content: " ";
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin: 0 0 .15rem .25rem;
+}
+.arrow-lg:after {
+  width: 8px;
+  height: 8px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+
+/* ***************** */
+/* parallax-bullshit */
+/* ***************** */
+.content {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -webkit-perspective: 300px;
+  -moz-perspective: 300px;
+  -ms-perspective: 300px;
+  -o-perspective: 300px;
+  perspective: 300px;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.parallax-grp {
+  position: relative;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -ms-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+.parallax-back-1 {
+  -webkit-transform: translateZ(100px) scale(.67);
+  -moz-transform: translateZ(100px) scale(.67);
+  -ms-transform: translateZ(100px) scale(.67);
+  -o-transform: translateZ(100px) scale(.67);
+  transform: translateZ(100px) scale(.67);
+}
+
+.parallax-back-2 {
+  -webkit-transform: translateZ(60px) scale(.8);
+  -moz-transform: translateZ(60px) scale(.8);
+  -ms-transform: translateZ(60px) scale(.8);
+  -o-transform: translateZ(60px) scale(.8);
+  transform: translateZ(60px) scale(.8);
+}
+
+.parallax-back-3 {
+  -webkit-transform: translateZ(80px) scale(.75);
+  -moz-transform: translateZ(80px) scale(.75);
+  -ms-transform: translateZ(80px) scale(.75);
+  -o-transform: translateZ(80px) scale(.75);
+  transform: translateZ(80px) scale(.75);
+}
+
+.parallax-grp-stay {
+  position: relative;
+  z-index: 5;
+  -webkit-transform: translateZ(0px);
+  -moz-transform: translateZ(0px);
+  -ms-transform: translateZ(0px);
+  -o-transform: translateZ(0px);
+  transform: translateZ(0px);
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.parallax-grp-stay-rel {
+  position: relative;
+}
+
+@media (max-width: 48rem) {
+  .content {
+    position: static;
+    -webkit-perspective: none;
+    -moz-perspective: none;
+    -ms-perspective: none;
+    -o-perspective: none;
+    perspective: none;
+    -webkit-transform-style: flat;
+    -moz-transform-style: flat;
+    -ms-transform-style: flat;
+    -o-transform-style: flat;
+    transform-style: flat;
+  }
+
+  .parallax-grp {
+    -webkit-transform-style: flat;
+    -moz-transform-style: flat;
+    -ms-transform-style: flat;
+    -o-transform-style: flat;
+    transform-style: flat;
+  }
+
+  .parallax-grp--actual-parallax {
+    display: none;
+  }
+}
+
+
+/* ****** */
+/* navbar */
+/* ****** */
+.my-navbar-dammit-bootstrap {
+  font-weight: bold;
+}
+
+.logo-small {
+  display: inline-block;
+  float: left;
+  margin-right: 1rem;
+}
+.logo-small img {
+  margin-top: 1.4rem;
+  width: 8rem;
+}
+
+.nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 2rem 2.4rem;
+  text-transform: uppercase;
+  color: #fff;
+  border-top: 3px solid transparent;
+}
+.nav a:hover {
+  border-top: 3px solid #fff;
+}
+
+
+/* ******** */
+/* nav menu */
+/* ******** */
+.nav-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  background-color: #fff;
+  height: 100vh;
+  width: 70%;
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-transition: transform .3s ease 0s;
+  -webkit-transition: -webkit-transform .3s ease 0s;
+  -moz-transition: transform .3s ease 0s;
+  -ms-transition: transform .3s ease 0s;
+  -o-transition: transform .3s ease 0s;
+  transition: -webkit-transform .3s ease 0s;
+  transition: transform .3s ease 0s, -webkit-transform .3s ease 0s;
+  transition: transform .3s ease 0s;
+}
+.nav-menu.nav-menu--show {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.nav-menu--list {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu--item {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-menu a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem 1rem;
+  text-transform: uppercase;
+}
+.nav-menu a:hover {
+  color: #03bec6;
+  background-color: #eee;
+}
+
+.nav-menu--close {
+  padding: .5rem 1rem;
+  font-size: 2rem;
+  position: relative;
+  top: 50%;
+  cursor: pointer;
+  color: #03bec6;
+}
+
+.nav-menu--open {
+  text-transform: uppercase;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  cursor: pointer;
+  z-index: 4;
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+  color: #eee;
+}
+
+.nav-menu--cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  opacity: 0;
+  -webkit-transition: opacity .3s ease 0s;
+  -moz-transition: opacity .3s ease 0s;
+  -ms-transition: opacity .3s ease 0s;
+  -o-transition: opacity .3s ease 0s;
+  transition: opacity .3s ease 0s;
+}
+.nav-menu--cover.nav-menu--show {
+  opacity: .5;
+  z-index: 100;
+}
+
+
+/* ****************** */
+/* corporate bullshit */
+/* ****************** */
+.corporate-bullshit {
+  position: relative;
+  background-image: url('../images/landing-photo-just-for-shits-color.jpg');
+  background-position: 50% 50%;
+  text-align: center;
+  padding: 0;
+  margin-bottom: 8rem;
+  color: #fff;
+  overflow: hidden;
+}
+
+.corporate-bullshit-words-container {
+  margin: 5rem 0 9rem;
+}
+
+.logo-main img {
+  width: 100%;
+  max-width: 40rem;
+}
+
+.corporate-bullshit-btn {
+  margin-top: 3rem;
+  padding: 1rem 3rem;
+  color: #03bec6;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+.corporate-bullshit-btn:hover {
+  color: #03bec6;
+}
+
+@media (max-width: 48rem) {
+  .tagline {
+    font-size: 1.5rem;
+  }
+  .corporate-bullshit-btn {
+    font-size: 1rem;
+  }
+}
+
+
+/* ****************************************** */
+/* corporate-bullshit-3--revenge-of-the-width */
+/* ****************************************** */
+.corporate-bullshit-3--revenge-of-the-width {
+  margin-bottom: 8rem;
+}
+
+.corporate-bullshit-3--the-return-of-the-ping {
+  margin: 1rem 0;
+}
+
+.bullshit-icon {
+  width: 8rem;
+  height: 8rem;
+}
+
+.bullshit-header {
+  color: #03bec6;
+}
+
+@media (max-width: 48rem) {
+  .corporate-bullshit-3--revenge-of-the-width {
+    text-align: center;
+  }
+}
+
+
+/* ********************** */
+/* journalistic-integrity */
+/* ********************** */
+.journalistic-integrity {
+  text-align: center;
+  background-color: #03bec6;
+  font-size: 1.5rem;
+  color: #f4f4f4;
+  padding: 5rem 0 2.25rem;
+  margin-bottom: 8rem;
+}
+
+.journalistic-integrity a {
+  color: #333;
+}
+.journalistic-integrity a:hover {
+  text-decoration: underline;
+}
+
+.journalism-quote-container {
+  margin-bottom: 2rem;
+}
+.journalism-quote {
+  font-style: italic;
+}
+.journalism-company {
+  font-weight: bold;
+}
+.journalism-company-desc {
+  font-size: 1rem;
+  color: #b7e8ea;
+}
+
+
+/* ********** */
+/* user-types */
+/* ********** */
+.user-types {
+  margin-bottom: 8rem;
+  text-align: center;
+}
+
+.user-type-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.user-type-container {
+  margin: 1rem 0 2rem;
+}
+
+.user-type-subcontainer {
+  border: 2px solid #eee;
+  border-radius: 10px;
+  padding: .5rem;
+  height: 100%;
+}
+.user-type-container:nth-child(1) .user-type-subcontainer:hover {
+  border: 2px solid #03c62d;
+}
+.user-type-container:nth-child(1) .user-type-business,
+.user-type-container:nth-child(1) a {
+  color: #03c62d;
+}
+.user-type-container:nth-child(2) .user-type-subcontainer:hover {
+  border: 2px solid #03bec6;
+}
+.user-type-container:nth-child(2) .user-type-business {
+  color: #03bec6;
+}
+.user-type-container:nth-child(3) .user-type-subcontainer:hover {
+  border: 2px solid #0071e6;
+}
+.user-type-container:nth-child(3) .user-type-business,
+.user-type-container:nth-child(3) a {
+  color: #0071e6;
+}
+.user-type-container:nth-child(4) .user-type-subcontainer:hover {
+  border: 2px solid #7232f1;
+}
+.user-type-container:nth-child(4) .user-type-business,
+.user-type-container:nth-child(4) a {
+  color: #7232f1;
+}
+
+.user-type-business {
+  font-weight: 700;
+}
+
+.user-type-icon {
+  margin: .5rem 0;
+  width: 8rem;
+  height: 8rem;
+}
+
+.user-type-desc-container {
+  margin: 10px 1rem 1rem;
+}
+
+.user-type-desc {
+  margin-bottom: 1rem;
+}
+
+
+/* ********** */
+/* trendiness */
+/* ********** */
+.oooo-hoooo-check-this-out {
+  position: relative;
+  height: 45rem;
+  padding: 0;
+  overflow: hidden;
+}
+
+.oooo-hoooo-check-this-out--bg-image {
+  position: absolute;
+  padding: 0;
+  background-image: url('../images/landing-page-parallax-2-trendy-4-me-color.jpg');
+  background-position: 50% 50%;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+}
+
+.oooo-hoooo-check-this-out--container {
+  text-align: center;
+  color: #eee;
+  z-index: 5;
+  margin-top: 7.5rem;
+}
+.oooo-hoooo-check-this-out--container h1 {
+  font-weight: 700;
+  font-size: 6rem;
+}
+.oooo-hoooo-check-this-out--container h1:nth-child(1) {
+  margin-top: 5rem;
+  margin-left: -5rem;
+}
+.oooo-hoooo-check-this-out--container h1:nth-child(2) {
+  font-size: 7rem;
+}
+.oooo-hoooo-check-this-out--container h1:nth-child(3) {
+  margin-top: 2.5rem;
+  margin-left: 15rem;
+}
+
+.wait-whats--whats-going-on {
+  position: relative;
+  padding: 0;
+  margin-bottom: 0;
+  background-color: #333;
+  text-align: center;
+  color: #eee;
+  z-index: 7;
+  margin-top: -9rem;
+}
+
+.wait-whats--whats-going-on--text {
+  padding: 3rem 0;
+  font-size: 10rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+  letter-spacing: 3rem;
+}
+
+.oooooooh--give-me-that-css-tut-breh {
+  position: relative;
+  height: 45rem;
+  padding: 0;
+  overflow: hidden;
+  margin-top: -9rem;
+}
+
+.oooooooh--give-me-that-css-tut-breh--bg-image {
+  position: absolute;
+  padding: 0;
+  background-image: url('../images/landing-page-parallax-3-trendy-5-me-color.jpg');
+  background-position: 50% 50%;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+
+.oooooooh--give-me-that-css-tut-breh--container {
+  text-align: center;
+  color: #eee;
+  z-index: 5;
+}
+.oooooooh--give-me-that-css-tut-breh--container h1 {
+  font-weight: 700;
+  font-size: 8rem;
+  margin-top: 7.5rem;
+  margin-left: -10rem;
+}
+.oooooooh--give-me-that-css-tut-breh--container h1:nth-child(2) {
+  font-size: 10rem;
+  margin-top: 5rem;
+  margin-left: 10rem;
+}
+
+@media (max-width: 48rem) {
+  .oooooooh--give-me-that-css-tut-breh h1 {
+    font-size: 6rem;
+  }
+}
+
+
+/* ******* */
+/* macbook */
+/* ******* */
+.macbook-container {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+}
+
+.macbook-img {
+  float: right;
+}
+
+@media (min-width: 48rem) {
+  .macbook-title-container {
+    transform: translateY(50%);
+  }
+}
+
+.macbook-title div {
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 48rem) {
+  .macbook-img-container {
+    position: relative;
+    height: 30rem;
+  }
+
+  .macbook-img {
+    position: absolute;
+    left: -9999px;
+    right: -9999px;
+    height: 30rem;
+    margin: auto;
+  }
+
+  .macbook-title {
+    text-align: center;
+  }
+
+  .macbook-desc ol {
+    padding-left: 1rem;
+  }
+}
+
+
+/* ******* */
+/* synergy */
+/* ******* */
+.synergy {
+  text-align: center;
+  margin-bottom: 8rem;
+  background-color: #03bec6;
+  overflow-x: hidden;
+  padding: 2rem 0 4rem;
+}
+
+.corp-logo-container {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 1rem 0;
+}
+
+.corp-logo {
+  display: inline-block;
+  max-height: 100px;
+  max-width: 200px;
+  opacity: 0.5;
+  margin: 0 2rem;
+}
+
+
+/* ********************* */
+/* these-were-not-bought */
+/* ********************* */
+.these-were-not-bought {
+  text-align: center;
+  margin-bottom: 8rem;
+}
+
+.these-were-not-bought-title {
+  text-align: center;
+}
+
+.these-were-not-bought-title .subtitle {
+  color: #aaa;
+}
+
+.testimonial-container {
+  margin: 3rem 0;
+}
+
+.testimonial-picture {
+  border-radius: 50%;
+  width: 10rem;
+  height: 10rem;
+  margin: 1rem 0;
+}
+.testimonial {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.testimonial-name {
+  font-size: 1.25rem;
+  color: #aaa;
+}
+
+.testimonial-occupation {
+  font-style: italic;
+  color: #aaa;
+}
+
+
+/* ****** */
+/* footer */
+/* ****** */
+.footer-fetish {
+  background-color: #333;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.footer-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-header {
+  font-weight: 700;
+  color: #eee;
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+}
+
+.footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+.footer li {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.footer a {
+  width: 100%;
+  height: 100%;
+  color: #888;
+}
+.footer a:hover {
+  color: #03bec6;
+}
+
+
+@media (max-width: 48rem) {
+  .corporate-bullshit,
+  .corporate-bullshit-3--revenge-of-the-width,
+  .journalistic-integrity,
+  .user-types,
+  .macbook,
+  .synergy,
+  .these-were-not-bought {
+    margin-bottom: 4rem;
+  }
+  .macbook {
+    margin-top: 4rem;
+  }
+}

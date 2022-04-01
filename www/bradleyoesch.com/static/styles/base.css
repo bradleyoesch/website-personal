@@ -1,0 +1,293 @@
+/* *********************************************************** */
+/* base--woah serving two css files what year is this 2009??¿? */
+/* *********************************************************** */
+html, body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  color: #111;
+  background-color: #333;
+  font-size: 14px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: #03bec6;
+}
+a:focus, a:hover {
+  color: #0085a1;
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+.bg-color {
+  background-color: #fff;
+}
+
+.full-width {
+  width: 100% !important;
+}
+
+.full-height {
+  height: 100% !important;
+}
+
+.arrow:after {
+  position: relative;
+  vertical-align: middle;
+  pointer-events: none;
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-right-width: 1px;
+  border-right-style: solid;
+  content: " ";
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  margin: 0 0 .15rem .25rem;
+}
+.arrow-lg:after {
+  width: 8px;
+  height: 8px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+
+.main {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.header-title {
+  margin-top: 0;
+  margin-bottom: 3rem;
+  font-weight: 700;
+}
+
+.container-sm {
+  max-width: 54rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ****** */
+/* navbar */
+/* ****** */
+.my-navbar-dammit-bootstrap {
+  background-color: #03bec6;
+  font-weight: bold;
+}
+
+.logo-small {
+  display: inline-block;
+  float: left;
+}
+.logo-small > a {
+  display: block;
+  padding: 1.7rem 1rem;
+  min-height: 100%;
+  height: 100%;
+  border-top: 3px solid transparent;
+}
+.logo-small > a:hover {
+  border-top: 3px solid #fff;
+}
+
+.logo-small img {
+  width: 8rem;
+}
+
+.nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+.nav a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 1.9rem 1.5rem 2rem;
+  text-transform: uppercase;
+  color: #fff;
+  border-top: 3px solid transparent;
+}
+.nav a:hover {
+  border-top: 3px solid #fff;
+}
+
+@media (max-width: 48rem) {
+  .my-navbar-dammit-bootstrap {
+    text-align: center;
+  }
+
+  .logo-small {
+    float: none;
+    margin-right: 0;
+  }
+
+  .logo-small > a {
+    padding: 1.1rem 0;
+  }
+}
+
+
+/* ******** */
+/* nav menu */
+/* ******** */
+.nav-menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  background-color: #fff;
+  height: 100vh;
+  width: 70%;
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -ms-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-transition: transform .3s ease 0s;
+  -webkit-transition: -webkit-transform .3s ease 0s;
+  -moz-transition: transform .3s ease 0s;
+  -ms-transition: transform .3s ease 0s;
+  -o-transition: transform .3s ease 0s;
+  transition: -webkit-transform .3s ease 0s;
+  transition: transform .3s ease 0s, -webkit-transform .3s ease 0s;
+  transition: transform .3s ease 0s;
+}
+.nav-menu.nav-menu--show {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.nav-menu--list {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu--item {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-menu a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem 1rem;
+  text-transform: uppercase;
+}
+.nav-menu a:hover {
+  color: #03bec6;
+  background-color: #eee;
+}
+
+.nav-menu--close {
+  padding: .5rem 1rem;
+  font-size: 2rem;
+  position: relative;
+  top: 50%;
+  cursor: pointer;
+  color: #03bec6;
+}
+
+.nav-menu--open {
+  text-transform: uppercase;
+  position: absolute;
+  top: 1.5rem;
+  left: 1rem;
+  cursor: pointer;
+  z-index: 4;
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+  color: #eee;
+}
+
+.nav-menu--cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  opacity: 0;
+  -webkit-transition: opacity .3s ease 0s;
+  -moz-transition: opacity .3s ease 0s;
+  -ms-transition: opacity .3s ease 0s;
+  -o-transition: opacity .3s ease 0s;
+  transition: opacity .3s ease 0s;
+}
+.nav-menu--cover.nav-menu--show {
+  opacity: .5;
+  z-index: 100;
+}
+
+
+/* ****** */
+/* footer */
+/* ****** */
+.footer-fetish {
+  background-color: #333;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.footer-row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.footer-col {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.footer-header {
+  font-weight: 700;
+  color: #eee;
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+}
+
+.footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+.footer li {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+.footer a {
+  width: 100%;
+  height: 100%;
+  color: #888;
+}
+.footer a:hover {
+  color: #03bec6;
+}

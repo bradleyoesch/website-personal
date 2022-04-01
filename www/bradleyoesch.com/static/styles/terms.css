@@ -1,0 +1,9 @@
+.agree-btn {
+  margin-right: 1rem;
+}
+.disagree-btn:after {
+  content: 'I Do Not Agree';
+}
+.disagree-btn:not(:disabled):hover:after {
+  content: 'I Clearly Agree';
+}

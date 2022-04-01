@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Comedy - Wanderlust East | Bradley Oesch</title>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta name="description" content="Personal website for Bradley Oesch">
+    <meta name="keywords" content="bradley, oesch, bradley oesch">
+    <meta http-equiv="cache-control" content="no-cache" />
+
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            visibility: hidden;
+            overflow: hidden;
+        }
+
+        .fade {
+            animation: .75s ease-out 2s 1 FadeIn;
+        }
+
+        @keyframes FadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .container {
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f3bab1;
+        }
+
+        .poster-link {
+            display: block;
+            height: 65%;
+            min-height: 350px;
+            max-height: 100%;
+            min-width: 350px;
+            max-width: 90%;
+        }
+
+        .poster-link .poster {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container fade">
+        <a class="poster-link" href="https://www.instagram.com/wanderlustwinecollective/">
+            <img class="poster" src="http://bradleyoesch.com/img/2022-00-00-poster-no-show-800px.jpg" alt="Show cancelled this week" />
+        </a>
+    </div>
+
+    <script>
+        /**
+         * Fake a lil page delay so we don't load a pink screen and try to load an image
+         * and then redirect right after
+         */
+        function loadPage() {
+            setTimeout(function() {
+                var bodyElement = document.getElementsByTagName('body')[0];
+                bodyElement.style = 'visibility: visible;';
+            }, 2000)
+        }
+
+        /**
+         * Get redirect url if:
+         * - there is a show either today or in the future
+         * - it is within seven days of that show
+         *
+         * Return default url if show has no url
+         * Null if no show the week of `now`
+         */
+        function getShowRedirectUrl(now, shows) {
+            var DEFAULT_URL = 'https://www.instagram.com/wanderlustwinecollective/';
+
+            var nextShow = shows.find(function(show) {
+                // get first show that is in the future or today
+                // assumes `shows` is sorted by date ASC
+                return show.date >= now;
+            });
+
+            if (!nextShow) {
+                // no next show, assume this week is cancelled
+                return null;
+            }
+
+            var sevenDaysBeforeNextShow = new Date(nextShow.date);
+            sevenDaysBeforeNextShow.setDate(nextShow.date.getDate() - 7);
+
+            var isNextShowThisWeek = now >= sevenDaysBeforeNextShow;
+            if (!isNextShowThisWeek) {
+                return null;
+            }
+
+            // if next show is this week, redirect to tickets url or a default url
+            return nextShow.url ? nextShow.url : DEFAULT_URL;
+        }
+
+        /**
+         * Redirect to tickets url if one exists
+         * Skip if user provides `tryRedirect=false` param
+         */
+        function maybeRedirect() {
+            var url = new URL(window.location.href);
+            var tryRedirect = url.searchParams.has("tryRedirect") ? url.searchParams.get("tryRedirect") === 'true' : true;
+            if (!tryRedirect) {
+                return;
+            }
+
+            var SHOWS = [
+                // bradley
+                { date: new Date('2022-04-02'), url: 'https://geoji.com/g/2292?r=104' },
+                // gaby
+                { date: new Date('2022-04-16'), url: 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234' },
+            ];
+            var now = new Date();
+            var redirectUrl = getShowRedirectUrl(now, SHOWS);
+            if (redirectUrl) {
+                window.location.replace(redirectUrl);
+            }
+        }
+
+        loadPage();
+        maybeRedirect();
+    </script>
+</body>
+</html>

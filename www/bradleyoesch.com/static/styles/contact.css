@@ -1,0 +1,23 @@
+/* ******* */
+/* contact */
+/* ******* */
+.contact-info {
+  margin-bottom: 3rem;
+}
+
+.contact-form {
+  margin-bottom: 3rem;
+}
+
+.contact-form label {
+  margin-left: 2px;
+}
+
+.contact-form textarea {
+  height: 5rem;
+}
+
+.submit-msg {
+  margin-left: 1rem;
+  color: #03bec6;
+}

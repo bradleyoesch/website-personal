@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+@media print {
+  .main {
+    width: 100%;
+  }
+
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+}
+
+strong {
+  font-weight: 700;
+}
+
+.resume {
+  font: 400 12px/1.35 'Lora', Georgia, serif;
+  color: #333;
+  margin: auto 0;
+  padding: 0 1rem;
+}
+
+.resume h1 {
+  font-size: 3rem;
+}
+
+.resume h2 {
+  font-size: 1.75rem;
+  text-transform: uppercase;
+}
+
+.resume h1,
+.resume h2 {
+  font-weight: 700;
+  margin: 0;
+}
+
+.resume a {
+  color: #333;
+  text-decoration: none;
+}
+
+.resume a:hover {
+  border-bottom: 2px solid black;
+  color: #333;
+}
+
+.resume p {
+  margin: 0;
+}
+
+.resume ul {
+  margin: 0;
+  -webkit-padding-start: 2rem;
+}
+
+.resume .name {
+  display: inline-block;
+  margin-top: 0;
+}
+
+.resume .name a {
+  display: inline-block;
+  line-height: 2.75rem;
+}
+
+.resume .name a:hover {
+  border-width: 4px;
+}
+
+.section {
+  margin-top: 0.83rem;
+}
+
+.subsection:nth-of-type(n+2) {
+  /* all except first */
+  margin-top: 0.5rem;
+}
+
+.icons {
+  margin-top: 1.5rem;
+}
+
+a.icon {
+  text-decoration: none;
+  padding: 0.35rem;
+}
+
+a.icon:hover {
+  border-bottom: 2px solid black;
+}
+
+.split_left_right {
+  width: 100%;
+}
+
+.split_left_right > :first-child {
+  display: inline-block;
+  max-width: 75%;
+}
+
+.split_left_right > :last-child {
+  float: right;
+  text-align: right;
+}
+
+.company_info {
+  font-weight: bold;
+}
+
+.company_info > :last-child,
+.project_info > :last-child {
+  position: relative;
+  top: 0.25rem;
+}
+
+.resume .section .project_info a {
+  font-weight: bold;
+}
+
+.subject {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+}
+
+.title {
+  font-weight: bold;
+  font-style: italic;
+}
+
+.technologies {
+  font-style: italic;
+}
+
+.date {
+  font-style: italic;
+}
+
+.slash {
+  position: relative;
+  bottom: 0.1em;
+
+  /* using em so it's relative to size (I think) */
+}
+
+.skills_table {
+  width: 100%;
+}
+
+.skills_table tr td:first-child {
+  font-weight: bold;
+}
+
+.skills_table tr td:last-child {
+  padding-left: 0.3rem;
+}
+
+@media screen and (min-width: 480px) {
+  .resume {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .resume {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}

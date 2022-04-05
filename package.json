@@ -1,24 +1,20 @@
 {
   "name": "website-personal",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "App to generate static files to serve at http://bradleyoesch.com",
   "type": "module",
-  "main": "src/js/app.js",
   "scripts": {
     "build": "radish build",
     "clean": "rm -rf build/",
-    "clean-all": "rm -rf node_modules/ && clean",
-    "dev": "radish dev",
-    "lint-tmp-moved": "eslint src/js & eslint --fix src/js",
+    "clean-all": "rm -rf node_modules/ && npm run clean",
+    "start": "radish dev",
     "lint": "radish lint",
     "lint-all": "npm run lint & npm run lint-styles",
     "lint-styles": "stylelint --fix \"src/{scss,styles}/**/*.{css,scss}\"",
-    "start": "BASE_PATH=`pwd` node src/js/app.js --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "pre-commit": [
-    "lint",
-    "lint-styles"
+    "lint-all"
   ],
   "repository": {
     "type": "git",

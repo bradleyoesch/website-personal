@@ -1,6 +1,6 @@
 # Website Personal
 
-Simple node app to generate static files to serve at [http://bradleyoesch.com](http://bradleyoesch.com).
+Simple node app to generate static files to serve at [http://bradleyoesch.com](http://bradleyoesch.com). Uses [Radish](https://radishjs.com/) to generate html from react files.
 
 ## Running Locally
 
@@ -10,28 +10,13 @@ Simple node app to generate static files to serve at [http://bradleyoesch.com](h
 
 Install dependencies and start the app.
 ```bash
+npm use
 npm i
-npm start
+npm run start
 ```
 
-Server will run at [http://127.0.0.1:3000/](http://127.0.0.1:3000/).
+Server will run at [http://localhost:8000](http://localhost:8000).
 
-## Creating/Deleting Pages
+## Creating Pages
 
-Create pages with:
-```bash
-node src/js/page.js create filename1 ... filenameN
-```
-
-Delete pages with:
-```bash
-node src/js/page.js rm filename1 ... filenameN
-```
-
-## Updating Pages
-
-The html is generated with [mustache templates](https://mustache.github.io/) which live in the `src/templates/` dir. The filename will correspond to the url path. All pages use `base.html` as the base template.
-
-The css is generated with [SASS](https://sass-lang.com/) which live in the `src/scss/` dir. The filename will correspond to the url path. All pages import `base.scss` as the base stylesheet.
-
-Running the app or watching for file changes will render the templates into html and compile the scss into css, then store them in `build/`, where the server looks to serve the files for the browser.
+Add new file to `src/pages/`, named after the path, e.g. foo.com/bar should be named `bar.tsx`.

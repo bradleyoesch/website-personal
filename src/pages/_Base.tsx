@@ -1,22 +1,25 @@
+import { PropsWithChildren } from 'react';
 import { Head } from 'radish';
 
 import Head from '../components/Head';
 import Sidebar from '../components/Sidebar';
 
-const Base = ({ description, children }) => {
+type BaseProps = {
+    description: string;
+};
+
+const Base = ({ description, children }: PropsWithChildren<BaseProps>) => {
     return (
         <>
             <Head description={description} />
 
             <Sidebar />
 
-            <section class="main">
-                <div class="main-subsection">
-                    {children}
-                </div>
+            <section className="main">
+                <div className="main-subsection">{children}</div>
             </section>
         </>
     );
-}
+};
 
 export default Base;

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Base from './_Base';
 
 const NotFound = () => {
@@ -7,9 +5,9 @@ const NotFound = () => {
         <Base description="404: Not Found">
             <h2>Page Not Found</h2>
 
-            <p>Oops, looks like this page doesn't exist :(</p>
+            <p>Oops, looks like this page doesn&apos;t exist :(</p>
         </Base>
     );
-}
+};
 
 export default NotFound;

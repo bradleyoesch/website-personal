@@ -1,0 +1,11 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx lint-staged
+
+# hack to sort and add changes to package.json
+# does mean that it's committed on each commit though
+npx sort-package-json
+npx sort-npm-scripts
+git add package.json
+

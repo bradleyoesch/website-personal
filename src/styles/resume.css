@@ -74,11 +74,6 @@ strong {
   margin-top: 0.83rem;
 }
 
-.subsection:nth-of-type(n+2) {
-  /* all except first */
-  margin-top: 0.5rem;
-}
-
 .icons {
   margin-top: 1.5rem;
 }
@@ -106,6 +101,10 @@ a.icon:hover {
   text-align: right;
 }
 
+.company-section {
+  margin-bottom: 1rem;
+}
+
 .company_info {
   font-weight: bold;
 }
@@ -121,7 +120,6 @@ a.icon:hover {
 }
 
 .subject {
-  text-transform: uppercase;
   font-size: 1.25rem;
 }
 

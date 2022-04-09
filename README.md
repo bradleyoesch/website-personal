@@ -20,3 +20,18 @@ Server will run at [http://localhost:8000](http://localhost:8000).
 ## Creating Pages
 
 Add new file to `src/pages/`, named after the path, e.g. foo.com/bar should be named `bar.tsx`.
+
+## Updating statics
+
+Copy and transform the generated statics into the `www/bradleyoesch.com` directory with:
+
+```
+TODO:
+- replace css
+- replace images, files
+```
+
+
+```bash
+npm run build
+````

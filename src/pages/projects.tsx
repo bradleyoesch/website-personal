@@ -38,7 +38,7 @@ const Project = ({
 
 const Projects = () => {
     return (
-        <Base description="Projects for Bradley Oesch">
+        <Base title="Projects" description="Projects for Bradley Oesch">
             <Project
                 title="Scraper News"
                 url="https://twitter.com/ScraperNews"

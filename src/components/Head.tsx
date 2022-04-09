@@ -1,17 +1,22 @@
 import { Head as RadishHead, useContent } from 'radish';
 
 type HeadProps = {
+    title?: string;
     description: string;
 };
 
 const Head = ({
+    title,
     description = 'Personal website for Bradley Oesch',
 }: HeadProps) => {
     const { site } = useContent();
 
     return (
         <RadishHead>
-            <title>{site.title}</title>
+            <title>
+                {site.title}
+                {title ? ` - ${title}` : ''}
+            </title>
 
             <meta
                 name="viewport"

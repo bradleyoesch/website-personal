@@ -14,7 +14,7 @@
   "author": "Bradley Oesch",
   "type": "module",
   "scripts": {
-    "build": "radish build",
+    "build": "radish build && node src/node/copyStatics.js",
     "clean": "rm -rf build/",
     "clean-all": "rm -rf node_modules/ && npm run clean",
     "lint": "npx eslint --max-warnings=0 --ext .tsx,.ts,.js,.jsx src/ --fix",
@@ -53,6 +53,7 @@
     "eslint-plugin-react": "^7.29.4",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
+    "js-beautify": "^1.14.3",
     "lint-staged": "^12.3.7",
     "prettier": "^2.6.2",
     "sass": "^1.32.8",

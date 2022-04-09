@@ -5,13 +5,18 @@ import Head from '../components/Head';
 import Sidebar from '../components/Sidebar';
 
 type BaseProps = {
+    title?: string;
     description: string;
 };
 
-const Base = ({ description, children }: PropsWithChildren<BaseProps>) => {
+const Base = ({
+    title,
+    description,
+    children,
+}: PropsWithChildren<BaseProps>) => {
     return (
         <>
-            <Head description={description} />
+            <Head title={title} description={description} />
 
             <Sidebar />
 

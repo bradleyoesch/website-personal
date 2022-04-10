@@ -44,7 +44,7 @@ const Projects = () => {
                 url="https://twitter.com/ScraperNews"
                 date="November 2014"
                 image={{
-                    src: 'img/scraper-news-screenshot.jpg',
+                    src: '/public/img/scraper-news-screenshot.jpg',
                     alt: 'Screenshot of Scraper News',
                 }}
             >
@@ -108,7 +108,7 @@ const Projects = () => {
                 url="http://apparelmockup.bigcartel.com"
                 date="January 2011"
                 image={{
-                    src: 'img/mockups-screenshot.jpg',
+                    src: '/public/img/mockups-screenshot.jpg',
                     alt: 'Screenshot of Apparel Mockup',
                 }}
             >

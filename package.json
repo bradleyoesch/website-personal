@@ -21,7 +21,7 @@
     "lint-all": "npm run lint & npm run lint-styles",
     "lint-styles": "stylelint --fix \"src/{scss,styles}/**/*.{css,scss}\"",
     "prepare": "husky install",
-    "start": "radish dev",
+    "start": "node src/node/copyResources.js && radish dev",
     "test": "jest"
   },
   "lint-staged": {
@@ -51,6 +51,7 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.29.4",
+    "fs-extra": "^10.0.1",
     "husky": "^7.0.4",
     "jest": "^27.5.1",
     "js-beautify": "^1.14.3",

@@ -122,10 +122,12 @@
             }
 
             var SHOWS = [
-                // bradley
-                { date: new Date('2022-04-02'), url: 'https://geoji.com/g/2292?r=104' },
-                // gaby
-                { date: new Date('2022-04-16'), url: 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234' },
+                { date: new Date('2022-04-02T23:59:00.000-06:00'), url: 'https://geoji.com/g/2292?r=104' },
+                { date: new Date('2022-04-16T23:59:00.000-06:00'), url: 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234' },
+                { date: new Date('2022-04-23T23:59:00.000-06:00'), url: 'https://geoji.com/g/2292?r=104' },
+                { date: new Date('2022-04-30T23:59:00.000-06:00'), url: 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234' },
+                { date: new Date('2022-05-07T23:59:00.000-06:00'), url: 'https://geoji.com/g/2292?r=104' },
+                { date: new Date('2022-05-14T23:59:00.000-06:00'), url: 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234' },
             ];
             var now = new Date();
             var redirectUrl = getShowRedirectUrl(now, SHOWS);

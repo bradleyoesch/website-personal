@@ -70,7 +70,7 @@
          * and then redirect right after
          */
         function loadPage() {
-            setTimeout(function() {
+            return setTimeout(function() {
                 var bodyElement = document.getElementsByTagName('body')[0];
                 bodyElement.style = 'visibility: visible;';
             }, 2000)
@@ -114,38 +114,60 @@
          * Redirect to tickets url if one exists
          * Skip if user provides `tryRedirect=false` param
          */
-        function maybeRedirect() {
+        function maybeRedirect(timerId) {
             var url = new URL(window.location.href);
             var tryRedirect = url.searchParams.has("tryRedirect") ? url.searchParams.get("tryRedirect") === 'true' : true;
             if (!tryRedirect) {
                 return;
             }
 
+            var BRADLEY_TIX_URL = 'https://geoji.com/g/2292?r=104';
+            var GABY_TIX_URL = 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234';
+
             var SHOWS = [
-                { date: new Date('2022-04-02T23:59:00.000-06:00'), url: 'https://geoji.com/g/2292?r=104' },
-                { date: new Date('2022-04-16T23:59:00.000-06:00'), url: 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234' },
-                { date: new Date('2022-04-23T23:59:00.000-06:00'), url: 'https://geoji.com/g/2292?r=104' },
-                { date: new Date('2022-04-30T23:59:00.000-06:00'), url: 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234' },
-                { date: new Date('2022-05-07T23:59:00.000-06:00'), url: 'https://geoji.com/g/2292?r=104' },
-                { date: new Date('2022-05-14T23:59:00.000-06:00'), url: 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234' },
+                { date: new Date('2022-04-02T23:59:00.000-06:00'), url: BRADLEY_TIX_URL },
+                { date: new Date('2022-04-16T23:59:00.000-06:00'), url: GABY_TIX_URL },
+
+                { date: new Date('2022-04-23T23:59:00.000-06:00'), url: BRADLEY_TIX_URL },
+                { date: new Date('2022-04-30T23:59:00.000-06:00'), url: GABY_TIX_URL },
+
+                { date: new Date('2022-05-07T23:59:00.000-06:00'), url: BRADLEY_TIX_URL },
+                { date: new Date('2022-05-14T23:59:00.000-06:00'), url: GABY_TIX_URL },
                 // alex
-                { date: new Date('2022-05-21T23:59:00.000-06:00'), url: 'https://geoji.com/g/2292?r=104' },
+                { date: new Date('2022-05-21T23:59:00.000-06:00'), url: BRADLEY_TIX_URL },
                 // bradley
-                { date: new Date('2022-05-28T23:59:00.000-06:00'), url: 'https://geoji.com/g/2292?r=104' },
+                { date: new Date('2022-05-28T23:59:00.000-06:00'), url: BRADLEY_TIX_URL },
                 // gaby switch
-                { date: new Date('2022-06-04T23:59:00.000-06:00'), url: 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234' },
-                { date: new Date('2022-06-11T23:59:00.000-06:00'), url: 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234' },
-                { date: new Date('2022-06-18T23:59:00.000-06:00'), url: 'https://geoji.com/g/2292?r=104' },
+                { date: new Date('2022-06-04T23:59:00.000-06:00'), url: GABY_TIX_URL },
+                { date: new Date('2022-06-11T23:59:00.000-06:00'), url: GABY_TIX_URL },
+
+                { date: new Date('2022-06-18T23:59:00.000-06:00'), url: BRADLEY_TIX_URL },
+                { date: new Date('2022-06-25T23:59:00.000-06:00'), url: GABY_TIX_URL },
+
+                { date: new Date('2022-07-02T23:59:00.000-06:00'), url: BRADLEY_TIX_URL },
+                { date: new Date('2022-07-09T23:59:00.000-06:00'), url: GABY_TIX_URL },
+
+                { date: new Date('2022-07-16T23:59:00.000-06:00'), url: BRADLEY_TIX_URL },
+                { date: new Date('2022-07-23T23:59:00.000-06:00'), url: GABY_TIX_URL },
+
+                { date: new Date('2022-07-30T23:59:00.000-06:00'), url: BRADLEY_TIX_URL },
+                { date: new Date('2022-08-06T23:59:00.000-06:00'), url: GABY_TIX_URL },
+
+                { date: new Date('2022-08-13T23:59:00.000-06:00'), url: BRADLEY_TIX_URL },
+                { date: new Date('2022-08-20T23:59:00.000-06:00'), url: GABY_TIX_URL },
+
+                { date: new Date('2022-08-27T23:59:00.000-06:00'), url: BRADLEY_TIX_URL },
             ];
             var now = new Date();
             var redirectUrl = getShowRedirectUrl(now, SHOWS);
             if (redirectUrl) {
                 window.location.replace(redirectUrl);
+                cancelTimeout(loadPageTimerId);
             }
         }
 
-        loadPage();
-        maybeRedirect();
+        const loadPageTimerId = loadPage();
+        maybeRedirect(loadPageTimerId);
     </script>
 </body>
 </html>

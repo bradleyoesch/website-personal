@@ -116,10 +116,6 @@
          */
         function maybeRedirect(timerId) {
             var url = new URL(window.location.href);
-            var tryRedirect = url.searchParams.has("tryRedirect") ? url.searchParams.get("tryRedirect") === 'true' : true;
-            if (!tryRedirect) {
-                return;
-            }
 
             var BRADLEY_TIX_URL = 'https://geoji.com/g/2292?r=104';
             var GABY_TIX_URL = 'https://geoji.com/g/Stand-Up-Comedy-Show-Hosted-By-Gabi-Montemayor-3234';
@@ -161,8 +157,13 @@
             var now = new Date();
             var redirectUrl = getShowRedirectUrl(now, SHOWS);
             if (redirectUrl) {
-                window.location.replace(redirectUrl);
-                cancelTimeout(loadPageTimerId);
+                var tryRedirect = url.searchParams.has("tryRedirect") ? url.searchParams.get("tryRedirect") === 'true' : true;
+                if (tryRedirect) {
+                    window.location.replace(redirectUrl);
+                } else {
+                    console.log('Would redirect to: ' + redirectUrl);
+                }
+                clearTimeout(loadPageTimerId);
             }
         }
 
